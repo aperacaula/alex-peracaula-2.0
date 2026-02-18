@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FadeIn from "@/components/ui/FadeIn";
@@ -14,25 +15,61 @@ export default function Home() {
   const featuredPhotos = photos.filter((p) => p.featured);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <div className="bg-background">
+      {/* ── Hero — full-screen headshot ──────────────────────────────────── */}
+      <section className="relative h-[70vh] w-full overflow-hidden">
+        {/* Headshot fills the screen */}
+        <Image
+          src={personalInfo.headshot}
+          alt={personalInfo.name[lang]}
+          fill
+          priority
+          className="object-cover"
+          style={{ objectPosition: "0 35%" }}
+        />
 
-      <main>
-        {/* ── Hero ─────────────────────────────────────────────────────────── */}
-        <section className="flex flex-col items-center justify-center min-h-[80vh] text-center">
-          <FadeIn>
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-light tracking-widest text-text uppercase">
+        {/* Dark gradient from bottom so text is always legible */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+        {/* Sticky header sits on top */}
+        <div className="absolute inset-x-0 top-0 z-50">
+          <Header />
+        </div>
+
+        {/* Name + tagline anchored to bottom-left */}
+        <div className="absolute bottom-0 left-0 px-8 sm:px-12 pb-12 sm:pb-16">
+          <FadeIn delay={0.2}>
+            <h1
+              className="font-serif font-light text-white leading-none"
+              style={{
+                fontSize: "clamp(3.5rem, 10vw, 9rem)",
+                letterSpacing: "-0.01em",
+              }}
+            >
               Àlex Peracaula
             </h1>
-            <p className="mt-4 text-muted tracking-widest text-sm uppercase">
+            <p className="mt-3 font-sans text-white/60 tracking-[0.25em] text-xs sm:text-sm uppercase">
               {personalInfo.bio[lang]}
             </p>
           </FadeIn>
-        </section>
+        </div>
 
-        {/* ── Reel ─────────────────────────────────────────────────────────── */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        {/* Scroll cue */}
+        <div className="absolute bottom-8 right-8 sm:right-12 flex flex-col items-center gap-2 text-white/40">
+          <span className="font-sans text-[10px] tracking-[0.2em] uppercase rotate-90 origin-center translate-x-4">
+            Scroll
+          </span>
+          <div className="w-px h-12 bg-white/20" />
+        </div>
+      </section>
+
+      <main>
+        {/* ── Reel ───────────────────────────────────────────────────────── */}
+        <section className="max-w-4xl mx-auto px-4 sm:px-8 py-24 sm:py-32">
           <FadeIn>
+            <p className="font-sans text-[10px] tracking-[0.3em] text-muted uppercase mb-8">
+              Reel
+            </p>
             <VideoEmbed
               url="https://vimeo.com/442985312?fl=pl&fe=vl"
               title="Àlex Peracaula — Acting Reel"
@@ -41,15 +78,20 @@ export default function Home() {
           </FadeIn>
         </section>
 
-        {/* ── Featured photos ───────────────────────────────────────────────── */}
+        {/* ── Featured photos ─────────────────────────────────────────────── */}
         {featuredPhotos.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-32">
+            <FadeIn>
+              <p className="font-sans text-[10px] tracking-[0.3em] text-muted uppercase mb-8">
+                Gallery
+              </p>
+            </FadeIn>
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-3">
               {featuredPhotos.map((photo, i) => (
                 <FadeIn
                   key={photo.id}
-                  delay={i * 0.08}
-                  className="break-inside-avoid"
+                  delay={i * 0.1}
+                  className="mb-3 break-inside-avoid"
                 >
                   <PhotoCard photo={photo} lang={lang} />
                 </FadeIn>
