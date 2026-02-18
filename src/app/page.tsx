@@ -7,7 +7,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import PhotoCard from "@/components/gallery/PhotoCard";
 import VideoEmbed from "@/components/ui/VideoEmbed";
 import { useLanguage } from "@/context/LanguageContext";
-import { personalInfo } from "@/data/content";
+import { personalInfo, siteContent } from "@/data/content";
 import { photos } from "@/data/portfolio";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="bg-background">
       {/* ── Hero — full-screen headshot ──────────────────────────────────── */}
-      <section className="relative h-[70vh] w-full overflow-hidden">
+      <section className="relative h-[80vh] w-full overflow-hidden">
         {/* Headshot fills the screen */}
         <Image
           src={personalInfo.headshot}
@@ -53,19 +53,11 @@ export default function Home() {
             </p>
           </FadeIn>
         </div>
-
-        {/* Scroll cue */}
-        <div className="absolute bottom-8 right-8 sm:right-12 flex flex-col items-center gap-2 text-white/40">
-          <span className="font-sans text-[10px] tracking-[0.2em] uppercase rotate-90 origin-center translate-x-4">
-            Scroll
-          </span>
-          <div className="w-px h-12 bg-white/20" />
-        </div>
       </section>
 
       <main>
         {/* ── Reel ───────────────────────────────────────────────────────── */}
-        <section className="max-w-4xl mx-auto px-4 sm:px-8 py-24 sm:py-32">
+        <section className="max-w-5xl mx-auto px-4 sm:px-8 py-24 sm:py-24">
           <FadeIn>
             <p className="font-sans text-[10px] tracking-[0.3em] text-muted uppercase mb-8">
               Reel
@@ -82,12 +74,17 @@ export default function Home() {
         {featuredPhotos.length > 0 && (
           <section className="max-w-7xl mx-auto px-4 sm:px-8 pb-32">
             <FadeIn>
-              <p className="font-sans text-[10px] tracking-[0.3em] text-muted uppercase mb-8">
-                Gallery
-              </p>
+              <div className="mb-4">
+                <a
+                  href="/gallery"
+                  className="font-sans text-[10px] tracking-[0.3em] text-muted uppercase"
+                >
+                  {siteContent.gallery[lang]}
+                </a>
+              </div>
             </FadeIn>
             <div className="columns-1 sm:columns-2 lg:columns-3 gap-3">
-              {featuredPhotos.map((photo, i) => (
+              {featuredPhotos.slice(0, 3).map((photo, i) => (
                 <FadeIn
                   key={photo.id}
                   delay={i * 0.1}
@@ -96,6 +93,16 @@ export default function Home() {
                   <PhotoCard photo={photo} lang={lang} />
                 </FadeIn>
               ))}
+            </div>
+            {/* Scroll cue */}
+            <div className="flex flex-col items-center gap-2 text-white/40">
+              <a
+                href="/gallery"
+                className="font-sans text-[8px] tracking-[0.2em] uppercase origin-center translate-y-2 hover:translate-x-2 cursor-pointer"
+              >
+                {siteContent.seeMore[lang]}
+              </a>
+              <div className="h-px w-12 bg-white/20" />
             </div>
           </section>
         )}

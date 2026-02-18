@@ -50,4 +50,9 @@ export const siteContent: ContentTranslations = {
     es: "Contacto",
     ca: "Contacte",
   },
+  seeMore: {
+    en: "See more",
+    es: "Ver más",
+    ca: "Veure més",
+  },
 };
