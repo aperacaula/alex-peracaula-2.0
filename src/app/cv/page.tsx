@@ -7,6 +7,7 @@ import CvEntry from "@/components/cv/CvEntry";
 import { useLanguage } from "@/context/LanguageContext";
 import { castingData, cvEntries, CV_CATEGORIES } from "@/data/cv";
 import { siteContent } from "@/data/content";
+import { generateCvHtml } from "@/lib/generateCvHtml";
 
 // ─── Casting info block ───────────────────────────────────────────────────────
 
@@ -115,21 +116,49 @@ export default function CvPage() {
   const trainingEntries = cvEntries.filter((e) => e.category === "training");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-10">
-        {/* Page title */}
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12 py-20 sm:py-10">
+        {/* Page title + download button */}
         <FadeIn>
-          <h1
-            className="font-serif font-light text-text mb-16"
-            style={{
-              fontSize: "clamp(2.5rem, 6vw, 5rem)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {siteContent.cv[lang]}
-          </h1>
+          <div className="relative flex items-end justify-between mb-16 gap-4">
+            <h1
+              className="font-serif font-light text-text"
+              style={{
+                fontSize: "clamp(2.5rem, 6vw, 5rem)",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {siteContent.cv[lang]}
+            </h1>
+            <button
+              onClick={() => {
+                const html = generateCvHtml(lang);
+                const win = window.open("", "_blank");
+                if (win) {
+                  win.document.write(html);
+                  win.document.close();
+                }
+              }}
+              className="absolute top-10 right-0 shrink-0 flex items-center gap-2 font-sans text-[11px] tracking-[0.2em] uppercase text-muted hover:text-text border border-border hover:border-text/40 px-4 py-2 transition-colors duration-200 mb-2 cursor-pointer"
+            >
+              <svg
+                className="w-3.5 h-3.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              {siteContent.download[lang]}
+            </button>
+          </div>
         </FadeIn>
 
         {/* Casting block */}
@@ -161,6 +190,7 @@ export default function CvPage() {
       </main>
 
       <Footer />
+
     </div>
   );
 }

@@ -63,9 +63,8 @@ export default function Home() {
               Reel
             </p>
             <VideoEmbed
-              url="https://vimeo.com/442985312?fl=pl&fe=vl"
+              url="https://vimeo.com/442985312"
               title="Àlex Peracaula — Acting Reel"
-              autoplay={false}
             />
           </FadeIn>
         </section>

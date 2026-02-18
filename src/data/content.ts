@@ -55,4 +55,9 @@ export const siteContent: ContentTranslations = {
     es: "Ver más",
     ca: "Veure més",
   },
+  download: {
+    en: "Download CV",
+    es: "Descargar CV",
+    ca: "Descarregar CV",
+  },
 };

@@ -1,22 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 interface VideoEmbedProps {
   /** Full Vimeo or YouTube URL, e.g. "https://vimeo.com/123456789" */
   url: string;
   title?: string;
-  /** If true, video starts playing automatically (muted, no controls shown initially) */
-  autoplay?: boolean;
 }
 
-function buildEmbedUrl(url: string, autoplay: boolean): string {
-  // Vimeo: https://vimeo.com/123456789 → https://player.vimeo.com/video/123456789
+function buildEmbedUrl(url: string): string {
+  // Vimeo
   const vimeo = url.match(/vimeo\.com\/(\d+)/);
   if (vimeo) {
     const params = new URLSearchParams({
-      autoplay: autoplay ? "1" : "0",
-      muted: autoplay ? "1" : "0",
+      autoplay: "1",
+      muted: "0",
       loop: "0",
       byline: "0",
       title: "0",
@@ -26,14 +25,14 @@ function buildEmbedUrl(url: string, autoplay: boolean): string {
     return `https://player.vimeo.com/video/${vimeo[1]}?${params}`;
   }
 
-  // YouTube: https://youtu.be/ID or https://youtube.com/watch?v=ID
+  // YouTube
   const yt =
     url.match(/youtu\.be\/([^?&]+)/) ||
     url.match(/youtube\.com\/watch\?v=([^&]+)/);
   if (yt) {
     const params = new URLSearchParams({
-      autoplay: autoplay ? "1" : "0",
-      mute: autoplay ? "1" : "0",
+      autoplay: "1",
+      mute: "0",
       rel: "0",
       modestbranding: "1",
     });
@@ -43,12 +42,43 @@ function buildEmbedUrl(url: string, autoplay: boolean): string {
   return url;
 }
 
-export default function VideoEmbed({ url, title = "Video", autoplay = false }: VideoEmbedProps) {
-  const [playing, setPlaying] = useState(autoplay);
-  const embedUrl = buildEmbedUrl(url, playing);
+function getYoutubeThumbnail(url: string): string | null {
+  const yt =
+    url.match(/youtu\.be\/([^?&]+)/) ||
+    url.match(/youtube\.com\/watch\?v=([^&]+)/);
+  if (yt) return `https://img.youtube.com/vi/${yt[1]}/maxresdefault.jpg`;
+  return null;
+}
+
+export default function VideoEmbed({ url, title = "Video" }: VideoEmbedProps) {
+  const [playing, setPlaying] = useState(false);
+  const [thumbnail, setThumbnail] = useState<string | null>(null);
+
+  // Fetch Vimeo thumbnail via oEmbed, or use YouTube's static CDN thumbnail
+  useEffect(() => {
+    const ytThumb = getYoutubeThumbnail(url);
+    if (ytThumb) {
+      setThumbnail(ytThumb);
+      return;
+    }
+
+    const vimeo = url.match(/vimeo\.com\/(\d+)/);
+    if (vimeo) {
+      fetch(`https://vimeo.com/api/oembed.json?url=${encodeURIComponent(`https://vimeo.com/${vimeo[1]}`)}&width=1280`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (data?.thumbnail_url) setThumbnail(data.thumbnail_url);
+        })
+        .catch(() => {
+          // Silently ignore — just show dark bg + play button
+        });
+    }
+  }, [url]);
+
+  const embedUrl = buildEmbedUrl(url);
 
   return (
-    <div className="relative w-full aspect-video bg-surface rounded-sm overflow-hidden">
+    <div className="relative w-full aspect-video bg-surface overflow-hidden">
       {playing ? (
         <iframe
           src={embedUrl}
@@ -58,15 +88,30 @@ export default function VideoEmbed({ url, title = "Video", autoplay = false }: V
           className="absolute inset-0 w-full h-full"
         />
       ) : (
-        /* Play button overlay shown before user interaction */
         <button
           onClick={() => setPlaying(true)}
           className="absolute inset-0 w-full h-full flex items-center justify-center group"
           aria-label={`Play ${title}`}
         >
-          <div className="w-16 h-16 rounded-full bg-accent/90 flex items-center justify-center transition-transform group-hover:scale-110">
+          {/* Thumbnail */}
+          {thumbnail && (
+            <Image
+              src={thumbnail}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 80vw"
+              priority
+            />
+          )}
+
+          {/* Dark scrim over thumbnail */}
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
+
+          {/* Play button */}
+          <div className="relative z-10 w-16 h-16 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-200 group-hover:scale-110 shadow-xl">
             <svg
-              className="w-6 h-6 text-accent-fg ml-1"
+              className="w-6 h-6 text-black ml-1"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
