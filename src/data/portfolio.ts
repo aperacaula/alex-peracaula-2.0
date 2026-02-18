@@ -1,19 +1,15 @@
-import { PortfolioItem } from '@/types';
+import { PhotoItem } from '@/types';
 
-export const portfolioItems: PortfolioItem[] = [
+export const photos: PhotoItem[] = [
   {
-    id: 'headshot',
-    title: 'Headshot',
-    category: 'theater',
-    image: [
-      'https://i.ibb.co/2ZJVgwH/DSCF1120.jpg',
-    ],
-    description: {
-      en: 'Leading role in Shakespeare\'s Hamlet at the National Theater.',
-      es: 'Papel principal en Hamlet de Shakespeare en el Teatro Nacional.',
-      ca: 'Paper principal en Hamlet de Shakespeare al Teatre Nacional.',
+    id: 'headshot-1',
+    src: 'https://i.ibb.co/2ZJVgwH/DSCF1120.jpg',
+    alt: {
+      en: 'Headshot of Àlex Peracaula Ruiz',
+      es: 'Foto de perfil de Àlex Peracaula Ruiz',
+      ca: 'Fotografia de perfil d\'Àlex Peracaula Ruiz',
     },
     featured: true,
   },
-  // Add more items as needed
+  // Add more photos here
 ];

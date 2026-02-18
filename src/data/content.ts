@@ -7,9 +7,9 @@ export const personalInfo: PersonalInfo = {
     ca: 'Àlex Peracaula Ruiz',
   },
   bio: {
-    en: 'Professional actor with 5+ years of experience in theater, film, and television.',
-    es: 'Actor profesional con más de 5 años de experiencia en teatro, cine y televisión.',
-    ca: 'Acteur professionnel avec plus de 5 ans d\'expérience au théâtre, au cinéma et à la télévision.',
+    en: 'Professional actor with experience in theater, film, and television.',
+    es: 'Actor profesional con experiencia en teatro, cine y televisión.',
+    ca: 'Actor professional amb experiència en teatre, cinema i televisió.',
   },
   headshot: 'https://i.ibb.co/2ZJVgwH/DSCF1120.jpg',
   contact: {
@@ -25,20 +25,29 @@ export const siteContent: ContentTranslations = {
     es: 'Inicio',
     ca: 'Inici',
   },
+  gallery: {
+    en: 'Gallery',
+    es: 'Galería',
+    ca: 'Galeria',
+  },
+  cv: {
+    en: 'CV',
+    es: 'CV',
+    ca: 'CV',
+  },
+  poetry: {
+    en: 'Poetry',
+    es: 'Poesía',
+    ca: 'Poesia',
+  },
   about: {
     en: 'About',
-    es: 'Acerca de',
-    ca: 'Sobre',
-  },
-  portfolio: {
-    en: 'Portfolio',
-    es: 'Portafolio',
-    ca: 'Portfolio',
+    es: 'Sobre mí',
+    ca: 'Sobre mi',
   },
   contact: {
     en: 'Contact',
     es: 'Contacto',
     ca: 'Contacte',
   },
-  // Add more translations as needed
 };
