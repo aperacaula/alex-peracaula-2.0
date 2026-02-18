@@ -13,14 +13,14 @@
 
 ## Pages
 
-| Route | Purpose |
-|---|---|
-| `/` | Landing — hero reel autoplay, brief tagline, smooth scroll into sections |
-| `/gallery` | Full photo gallery — all photos, smooth load-in on scroll |
-| `/cv` | Acting CV — film, theater, TV credits listed by category (no PDF) |
-| `/poetry` | Personal poetry — text-based, minimal layout |
-| `/about` | Short bio |
-| `/contact` | Contact form or direct details |
+| Route      | Purpose                                                                  |
+| ---------- | ------------------------------------------------------------------------ |
+| `/`        | Landing — hero reel autoplay, brief tagline, smooth scroll into sections |
+| `/gallery` | Full photo gallery — all photos, smooth load-in on scroll                |
+| `/cv`      | Acting CV — film, theater, TV credits listed by category (no PDF)        |
+| `/poetry`  | Personal poetry — text-based, minimal layout                             |
+| `/about`   | Short bio                                                                |
+| `/contact` | Contact form or direct details                                           |
 
 ---
 
@@ -41,21 +41,21 @@
 
 ## Phase 2 — Core Components 🔄 In Progress
 
-- [ ] Footer
-- [ ] Scroll-triggered fade-in animation wrapper (Framer Motion)
-- [ ] Photo card component (image + optional caption)
-- [ ] Lightbox (full-screen image viewer)
-- [ ] Reel video embed (Vimeo or YouTube, autoplay muted on landing)
-- [ ] CV entry component (title, role, director, year)
-- [ ] Poetry entry component
+- [x] Footer
+- [x] Scroll-triggered fade-in animation wrapper (Framer Motion)
+- [x] Photo card component (image + optional caption)
+- [x] Lightbox (full-screen image viewer)
+- [x] Reel video embed (Vimeo or YouTube, autoplay muted on landing)
+- [x] CV entry component (title, role, director, year)
+- [x] Poetry entry component
 
 ---
 
 ## Phase 3 — Pages 📄 Not Started
 
-- [ ] `/` — Hero with reel + tagline. Scroll reveals short bio teaser, a few featured photos, link to full gallery.
-- [ ] `/gallery` — Masonry or grid layout, all photos. Images appear on scroll with fade-in.
+- [x] `/` — Hero with reel + tagline. Scroll reveals short bio teaser, a few featured photos, link to full gallery.
 - [ ] `/cv` — Sections: Film, Theater, TV, Training. Each entry: title, role, director/company, year.
+- [ ] `/gallery` — Masonry or grid layout, all photos. Images appear on scroll with fade-in.
 - [ ] `/poetry` — List of poems. Click to expand or separate route per poem.
 - [ ] `/about` — Bio paragraph(s), headshot, maybe a pull quote.
 - [ ] `/contact` — Email, agent info, simple contact form or mailto link.

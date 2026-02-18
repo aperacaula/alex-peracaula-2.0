@@ -8,12 +8,17 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted">© {year} Àlex Peracaula Ruiz</p>
         <div className="flex flex-col sm:flex-row items-center gap-1 text-sm text-muted">
-          {personalInfo.contact.agent && (
-            <span>Agent: {personalInfo.contact.agent}</span>
-          )}
-          {personalInfo.contact.agent && personalInfo.contact.email && (
-            <span className="hidden sm:inline mx-2">·</span>
-          )}
+          <a
+            href="https://www.instagram.com/aperacaula/"
+            className="hover:text-text transition-colors"
+          >
+            @aperacaula
+          </a>
+          <span className="hidden sm:inline mx-2">·</span>
+          <a href="https://www.alsiragarciamaroto.net/alexperacaula">
+            Agent: {personalInfo.contact.agent}
+          </a>
+          <span className="hidden sm:inline mx-2">·</span>
           <a
             href={`mailto:${personalInfo.contact.email}`}
             className="hover:text-text transition-colors"

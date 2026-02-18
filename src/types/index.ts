@@ -28,23 +28,49 @@ export interface ContentTranslations {
 
 export interface PhotoItem {
   id: string;
-  src: string;           // external URL
+  src: string;
   alt: T;
   featured?: boolean;
 }
 
 // ─── CV ───────────────────────────────────────────────────────────────────────
 
-export type CvCategory = 'film' | 'theater' | 'tv' | 'training';
+export type CvCategory = 'film' | 'tv' | 'theater' | 'training';
+
+export type ProductionType =
+  | 'feature'       // Largometraje
+  | 'short'         // Cortometraje
+  | 'series'        // Serie
+  | 'play'          // Texto teatral
+  | 'course'        // Curso / taller
+  | 'degree';       // Titulación
 
 export interface CvEntry {
   id: string;
-  title: T;              // name of the work
-  role: T;               // character or role
-  company?: T;           // production company / theater company
-  director?: string;     // director name (usually same across languages)
-  year?: number;
   category: CvCategory;
+  title: string;              // Production titles don't change across languages
+  productionType: T;          // e.g. "Feature film" / "Largometraje" / "Llargmetratge"
+  role: T;                    // Character name or role type
+  director?: string;          // Director name — same across languages
+  company?: string;           // Production company — same across languages
+  venue?: string;             // Theater venue name — same across languages
+  location?: string;          // City — same across languages
+  yearStart: number;
+  yearEnd?: number;           // For ranges like 2025-2026
+}
+
+// Casting data — physical info, languages, skills
+export interface CastingData {
+  height: string;
+  hair: T;
+  eyes: T;
+  sizes: {
+    trousers: string;
+    shirt: string;
+    shoes: string;
+  };
+  languages: T;
+  skills: T;
 }
 
 // ─── Poetry ───────────────────────────────────────────────────────────────────
@@ -52,6 +78,6 @@ export interface CvEntry {
 export interface Poem {
   id: string;
   title: T;
-  body: T;               // full poem text — use \n for line breaks
+  body: T;
   year?: number;
 }
