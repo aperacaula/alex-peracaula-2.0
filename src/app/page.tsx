@@ -119,7 +119,7 @@ export default function Home() {
               ))}
             </div>
             {/* Scroll cue — only visible on md+ screens, animated */}
-            <div className="hidden md:flex flex-col items-center gap-2 text-white/40 mt-8">
+            <div className="flex flex-col items-center gap-2 text-white/40 mt-8">
               <motion.a
                 href="/gallery"
                 className="font-sans text-[8px] tracking-[0.2em] uppercase cursor-pointer"
