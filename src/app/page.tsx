@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FadeIn from "@/components/ui/FadeIn";
@@ -53,6 +54,22 @@ export default function Home() {
             </p>
           </FadeIn>
         </div>
+
+        {/* Scroll cue */}
+        <div className="hidden md:flex absolute bottom-1 right-1 flex-col items-center gap-2 text-white/40">
+          <motion.span
+            animate={{ x: [0, 6, 0] }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="font-sans text-[8px] tracking-[0.2em] rotate-90 uppercase origin-center translate-x-3 hover:translate-x-2 cursor-pointer"
+          >
+            Scroll
+          </motion.span>
+          <div className="w-px h-12 bg-white/20" />
+        </div>
       </section>
 
       <main>
@@ -93,14 +110,20 @@ export default function Home() {
                 </FadeIn>
               ))}
             </div>
-            {/* Scroll cue */}
-            <div className="flex flex-col items-center gap-2 text-white/40">
-              <a
+            {/* Scroll cue — only visible on md+ screens, animated */}
+            <div className="flex flex-col items-center gap-2 text-white/40 mt-2">
+              <motion.a
                 href="/gallery"
-                className="font-sans text-[8px] tracking-[0.2em] uppercase origin-center translate-y-2 hover:translate-x-2 cursor-pointer"
+                className="font-sans text-[8px] tracking-[0.2em] uppercase cursor-pointer"
+                animate={{ y: [0, 6, 0] }}
+                transition={{
+                  duration: 1.8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
                 {siteContent.seeMore[lang]}
-              </a>
+              </motion.a>
               <div className="h-px w-12 bg-white/20" />
             </div>
           </section>

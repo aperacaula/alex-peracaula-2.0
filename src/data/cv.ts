@@ -15,8 +15,8 @@ export const castingData: CastingData = {
     ca: "Verd castany",
   },
   sizes: {
-    trousers: "31",
-    shirt: "50",
+    trousers: "40",
+    shirt: "42",
     shoes: "42.5",
   },
   languages: {
