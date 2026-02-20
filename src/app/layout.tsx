@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { generateMetadata as generateSEO } from "@/lib/seo";
+import StructuredData from "@/components/seo/StructuredData";
 import "./globals.css";
 
 // Serif — hero name, section headings
@@ -17,14 +19,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Alex Peracaula Ruiz — Actor",
-  description: "Actor professional. Teatro, cine y televisión",
-  icons: {
-    icon: "/favicon.png",
-    apple: "/apple-touch-icon.png",
-  },
-};
+export const metadata: Metadata = generateSEO();
 
 export default function RootLayout({
   children,
@@ -33,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ca">
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${cormorant.variable} ${inter.variable} antialiased`}>
         <LanguageProvider>{children}</LanguageProvider>
       </body>
