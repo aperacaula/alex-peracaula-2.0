@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'aperacaula.imgbb.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
+      },
     ],
   },
 };
