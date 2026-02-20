@@ -6,6 +6,7 @@ import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FadeIn from "@/components/ui/FadeIn";
+import PhotoCard from "@/components/gallery/PhotoCard";
 import { useLanguage } from "@/context/LanguageContext";
 import { photos } from "@/data/portfolio";
 import { siteContent } from "@/data/content";
@@ -152,25 +153,18 @@ export default function GalleryPage() {
         {/* Masonry-style grid: 2 cols on mobile, 3 on desktop */}
         <div className="columns-2 md:columns-3 gap-4 space-y-4">
           {photos.map((photo, index) => (
-            <FadeIn key={photo.id} delay={index * 0.06} threshold={0.08}>
-              <button
+            <FadeIn
+              key={photo.id}
+              delay={Math.min(index * 0.02, 0.3)}
+              threshold={0.05}
+              className="break-inside-avoid"
+            >
+              <PhotoCard
+                photo={photo}
+                lang={lang}
                 onClick={() => openPhoto(index)}
-                className="group relative w-full overflow-hidden bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent block break-inside-avoid cursor-pointer"
-                aria-label={photo.alt[lang]}
-              >
-                <div className="relative w-full overflow-hidden">
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt[lang]}
-                    width={800}
-                    height={1000}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    sizes="(max-width: 640px) 50vw, 33vw"
-                  />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
-                </div>
-              </button>
+                priority={index < 6}
+              />
             </FadeIn>
           ))}
         </div>

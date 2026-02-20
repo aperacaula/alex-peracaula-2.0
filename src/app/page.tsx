@@ -114,12 +114,12 @@ export default function Home() {
                   delay={i * 0.1}
                   className="mb-3 break-inside-avoid"
                 >
-                  <PhotoCard photo={photo} lang={lang} />
+                  <PhotoCard photo={photo} lang={lang} priority={true} />
                 </FadeIn>
               ))}
             </div>
             {/* Scroll cue — only visible on md+ screens, animated */}
-            <div className="flex flex-col items-center gap-2 text-white/40 mt-2">
+            <div className="hidden md:flex flex-col items-center gap-2 text-white/40 mt-8">
               <motion.a
                 href="/gallery"
                 className="font-sans text-[8px] tracking-[0.2em] uppercase cursor-pointer"
