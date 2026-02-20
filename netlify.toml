@@ -1,0 +1,5 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+# Static export - no Next.js server, no plugins needed
