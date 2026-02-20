@@ -18,8 +18,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Àlex Peracaula Ruiz — Actor",
-  description: "Actor professional. Teatre, cinema i televisió.",
+  title: "Alex Peracaula Ruiz — Actor",
+  description: "Actor professional. Teatro, cine y televisión",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
