@@ -14,35 +14,29 @@ export default function PoetryPage() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
 
-      <main className="flex-1 max-w-3xl mx-auto w-full px-6 sm:px-8 py-20 sm:py-10">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12 py-20 sm:py-10">
         <FadeIn>
           <h1
-            className="font-serif font-light text-text mb-20"
+            className="font-serif font-light text-text mb-16 flex items-center gap-3"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 5rem)",
               letterSpacing: "-0.01em",
             }}
           >
             {siteContent.poetry[lang]}
+            <span className="text-muted" style={{ fontSize: "0.4em" }}>
+              ©
+            </span>
           </h1>
         </FadeIn>
 
-        <div className="space-y-24">
+        {/* Grid: 1 col on mobile, 2 on md, 3 on lg */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
           {poems.map((poem, index) => (
-            <FadeIn key={poem.id} delay={index * 0.08} threshold={0.1}>
-              <article>
-                {/* Year */}
-                {poem.year && (
-                  <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-muted mb-4">
-                    {poem.year}
-                  </p>
-                )}
-
+            <FadeIn key={poem.id} delay={index * 0.04} threshold={0.05}>
+              <article className="flex flex-col">
                 {/* Title */}
-                <h2
-                  className="font-serif font-light text-text mb-8"
-                  style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
-                >
+                <h2 className="font-serif font-light text-text text-3xl mb-4">
                   {poem.title[lang]}
                 </h2>
 
@@ -51,11 +45,11 @@ export default function PoetryPage() {
                   {poem.body[lang].split("\n").map((line, lineIndex) =>
                     line === "" ? (
                       // Blank line = stanza break
-                      <div key={lineIndex} className="h-6" />
+                      <div key={lineIndex} className="h-4" />
                     ) : (
                       <p
                         key={lineIndex}
-                        className="font-serif text-lg text-muted leading-relaxed"
+                        className="font-serif text-xl text-muted leading-relaxed"
                         style={{ fontStyle: "italic" }}
                       >
                         {line}
@@ -64,11 +58,6 @@ export default function PoetryPage() {
                   )}
                 </div>
               </article>
-
-              {/* Divider between poems */}
-              {index < poems.length - 1 && (
-                <div className="mt-24 border-t border-border" />
-              )}
             </FadeIn>
           ))}
         </div>

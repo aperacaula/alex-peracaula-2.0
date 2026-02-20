@@ -11,26 +11,25 @@ import { photos } from "@/data/portfolio";
 // ─── Long-form bio translations ───────────────────────────────────────────────
 
 const longBio = {
-  en: `Àlex Peracaula Ruiz is a professional actor based in Barcelona, trained across theater, film, and television. He studied at the Institut del Teatre de Barcelona (Superior Diploma in Scenic Arts) and has since worked with some of Spain's most prominent directors and production companies.
+  en: `Àlex Peracaula Ruiz is a Catalan actor based in Madrid, trained in theater, film, and television. He studied at Nancy Tuñón School and Laura Jou Studio, and since then has worked on numerous projects, primarily in television and theater.
 
-On screen, his credits include feature films and television series for major broadcasters. On stage, he has performed leading and supporting roles in classical and contemporary works at venues including the Teatre Nacional de Catalunya and the Teatre Romea.
+On screen, his credits include feature films and television series for TV3, RTVE, and Amazon MGM productions. In theater, he has participated in numerous productions since childhood with various companies, and recently has also written and directed two plays, premiered at La Escalera de Jacob and Teatro Lara.
+He is currently part of his own theater company AlfaRed-PapaCharlie alongside his fellow actor and friend Carlos Alcaide.
+He speaks Catalan, Spanish, English, and Portuguese fluently, and is currently represented by Alsira García-Maroto.`,
+  es: `Àlex Peracaula Ruiz es un actor catalán con base en Madrid, formado en teatro, cine y televisión. Estudió en el la Escuela Nancy Tuñón y en el Estudio Laura Jou y desde entonces ha encadenado varios trabajos sobretodo en televisión y teatro.
 
-He is fluent in Catalan, Spanish, and English, and is represented by agent Alsira García-Maroto.`,
-  es: `Àlex Peracaula Ruiz es un actor profesional con base en Barcelona, formado en teatro, cine y televisión. Estudió en el Institut del Teatre de Barcelona (Diploma Superior en Artes Escénicas) y desde entonces ha trabajado con algunos de los directores y productoras más destacados de España.
+En pantalla, sus créditos incluyen largometrajes y series de televisión para producciones de Tv3, RTVE o Amazon MGM. En teatro, ha participado en numerosos montajes desde pequeño en varias compañías y recientemente también ha firmado dos obras, estrenadas en La Escalera de Jacob y el Teatro Lara.
+Actualmente forma parte de su propia compañía de teatro AlfaRed-PapaCharlie junto con su compañero actor y amigo Carlos Alcaide.
+Habla catalán, español, inglés y portugués con fluidez, y actualmente está representado por Alsira García-Maroto.`,
+  ca: `Àlex Peracaula Ruiz és un actor català amb base a Madrid, format en teatre, cinema i televisió. Va estudiar a l'Escola Nancy Tuñón i a l'Estudi Laura Jou i des de llavors ha encadenat diversos treballs sobretot en televisió i teatre.
 
-En pantalla, sus créditos incluyen largometrajes y series de televisión para importantes cadenas. En el escenario, ha interpretado papeles protagonistas y secundarios en obras clásicas y contemporáneas en salas como el Teatre Nacional de Catalunya y el Teatre Romea.
-
-Habla catalán, español e inglés con fluidez, y está representado por la agente Alsira García-Maroto.`,
-  ca: `Àlex Peracaula Ruiz és un actor professional amb base a Barcelona, format en teatre, cinema i televisió. Va estudiar a l'Institut del Teatre de Barcelona (Diploma Superior en Arts Escèniques) i des de llavors ha treballat amb alguns dels directors i productores més destacats d'Espanya.
-
-En pantalla, els seus crèdits inclouen llargmetratges i sèries de televisió per a grans emissores. Damunt l'escenari, ha interpretat papers protagonistes i secundaris en obres clàssiques i contemporànies en sales com el Teatre Nacional de Catalunya i el Teatre Romea.
-
-Parla català, castellà i anglès amb fluïdesa, i el representa l'agent Alsira García-Maroto.`,
+En pantalla, els seus crèdits inclouen llargmetratges i sèries de televisió per a produccions de TV3, RTVE o Amazon MGM. En teatre, ha participat en nombrosos muntatges des de petit en diverses companyies i recentment també ha signat dues obres, estrenades a La Escalera de Jacob i el Teatro Lara.
+Actualment forma part de la seva pròpia companyia de teatre AlfaRed-PapaCharlie al costat del seu company actor i amic Carlos Alcaide.
+Parla català, castellà, anglès i portuguès amb fluïdesa, i actualment està representat per Alsira García-Maroto.`,
 };
 
 // Pick portrait photo (not headshot-1, which is the hero)
-const portraitPhoto =
-  photos.find((p) => p.id === "portrait-1") ?? photos[0];
+const portraitPhoto = photos.find((p) => p.id === "portrait-1") ?? photos[0];
 
 export default function AboutPage() {
   const { lang } = useLanguage();

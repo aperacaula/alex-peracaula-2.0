@@ -56,7 +56,7 @@ export default function Home() {
         </div>
 
         {/* Scroll cue */}
-        <div className="hidden md:flex absolute bottom-1 right-1 flex-col items-center gap-2 text-white/40">
+        <div className="hidden md:flex absolute bottom-5 right-1 flex-col items-center gap-2 text-white/40">
           <motion.span
             animate={{ x: [0, 6, 0] }}
             transition={{
@@ -68,7 +68,15 @@ export default function Home() {
           >
             Scroll
           </motion.span>
-          <div className="w-px h-12 bg-white/20" />
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-px h-8 translate-x--2 bg-white/20"
+          />
         </div>
       </section>
 
