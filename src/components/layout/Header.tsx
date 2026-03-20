@@ -7,6 +7,7 @@ import { siteContent } from "@/data/content";
 
 const NAV_LINKS = [
   { href: "/gallery", key: "gallery" },
+  { href: "/videos",  key: "videos"  },
   { href: "/cv",      key: "cv"      },
   { href: "/poetry",  key: "poetry"  },
   { href: "/about",   key: "about"   },

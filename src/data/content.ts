@@ -60,4 +60,9 @@ export const siteContent: ContentTranslations = {
     es: "Descargar CV",
     ca: "Descarregar CV",
   },
+  videos: {
+    en: "Videos",
+    es: "Vídeos",
+    ca: "Vídeos",
+  },
 };
