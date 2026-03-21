@@ -37,10 +37,7 @@ export default function VideosPage() {
 
         {/* Tab bar */}
         <FadeIn delay={0.1}>
-          <div
-            className="flex items-end gap-6 border-b border-border mb-12 overflow-x-auto"
-            style={{ scrollbarWidth: "none" }}
-          >
+          <div className="flex items-end justify-between md:justify-start md:gap-6 border-b border-border mb-12">
             {videoTabs.map((tab) => {
               const isActive = tab.id === activeTab;
               return (

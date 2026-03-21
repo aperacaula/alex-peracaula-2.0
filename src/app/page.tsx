@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -14,6 +15,7 @@ import { photos } from "@/data/portfolio";
 export default function Home() {
   const { lang } = useLanguage();
   const featuredPhotos = photos.filter((p) => p.featured);
+  const [heroLoaded, setHeroLoaded] = useState(false);
 
   return (
     <div className="bg-background">
@@ -25,8 +27,9 @@ export default function Home() {
           alt={personalInfo.name[lang]}
           fill
           priority
-          className="object-cover"
-          style={{ objectPosition: "0 35%" }}
+          onLoad={() => setHeroLoaded(true)}
+          className="object-cover transition-opacity duration-1000 ease-in-out"
+          style={{ objectPosition: "0 35%", opacity: heroLoaded ? 1 : 0 }}
         />
 
         {/* Dark gradient from bottom so text is always legible */}
