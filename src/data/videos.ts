@@ -23,7 +23,7 @@ export const videoTabs: VideoTab[] = [
     videos: [
       {
         id: "showreel-main",
-        url: "https://vimeo.com/1048620124",
+        url: "https://vimeo.com/442985312",
       },
     ],
   },
