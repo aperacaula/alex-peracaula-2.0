@@ -39,6 +39,20 @@ export const cvEntries: CvEntry[] = [
   {
     id: "av-01",
     category: "film",
+    title: "El Centro (T2)",
+    productionType: {
+      en: "Series",
+      es: "Serie",
+      ca: "Sèrie",
+    },
+    role: { en: "Agent", es: "Agente Chipre", ca: "Agent Chipre" },
+    director: "David Ulloa",
+    company: "Movistar+",
+    yearStart: 2026,
+  },
+  {
+    id: "av-02",
+    category: "film",
     title: "The Last Sunrise",
     productionType: {
       en: "Feature film",
@@ -51,7 +65,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2025,
   },
   {
-    id: "av-02",
+    id: "av-03",
     category: "film",
     title: "Nuda Propiedad",
     productionType: {
@@ -65,7 +79,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2025,
   },
   {
-    id: "av-03",
+    id: "av-04",
     category: "tv",
     title: "4 Estrellas",
     productionType: {
@@ -78,7 +92,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2024,
   },
   {
-    id: "av-04",
+    id: "av-05",
     category: "film",
     title: "KIMCHI",
     productionType: {
@@ -92,7 +106,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2024,
   },
   {
-    id: "av-05",
+    id: "av-06",
     category: "film",
     title: "Ahir a la nit",
     productionType: {
@@ -105,7 +119,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2022,
   },
   {
-    id: "av-06",
+    id: "av-07",
     category: "tv",
     title: "Com si fos ahir",
     productionType: {
@@ -118,7 +132,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2022,
   },
   {
-    id: "av-07",
+    id: "av-08",
     category: "film",
     title: "Honorarios, Baby",
     productionType: {
@@ -132,7 +146,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2021,
   },
   {
-    id: "av-08",
+    id: "av-09",
     category: "film",
     title: "Dies d'estiu i de pluja",
     productionType: {
@@ -146,7 +160,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2021,
   },
   {
-    id: "av-09",
+    id: "av-10",
     category: "film",
     title: "Washed Away",
     productionType: {
@@ -159,7 +173,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2021,
   },
   {
-    id: "av-10",
+    id: "av-11",
     category: "film",
     title: "The Weekend Thief",
     productionType: {
@@ -172,7 +186,7 @@ export const cvEntries: CvEntry[] = [
     yearStart: 2021,
   },
   {
-    id: "av-11",
+    id: "av-12",
     category: "film",
     title: "Arriving Somewhere",
     productionType: {
